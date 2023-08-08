@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate_Api.Dtos.Category;
 using RealEstate_Api.Repositories.CategoryRepository;
 
 namespace RealEstate_Api.Controllers
@@ -22,6 +23,13 @@ namespace RealEstate_Api.Controllers
             return Ok(values);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
+        {
+            _categoyRepository.CreateCategory(createCategoryDto);
+
+            return Ok("Kategori başarılı bir şekilde eklendi");
+        }
 
     }
 }
