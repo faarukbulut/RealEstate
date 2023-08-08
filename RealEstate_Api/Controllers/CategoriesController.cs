@@ -31,5 +31,18 @@ namespace RealEstate_Api.Controllers
             return Ok("Kategori başarılı bir şekilde eklendi");
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            _categoyRepository.DeleteCategory(id);
+            return Ok("Kategori başarılı bir şekilde silindi");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDTO updateCategoryDto)
+        {
+            _categoyRepository.UpdateCategory(updateCategoryDto);
+            return Ok("Kategori başarılı bir şekilde düzenlendi");
+        }
     }
 }
