@@ -8,5 +8,6 @@ namespace RealEstate_Api.Repositories.CategoryRepository
         void CreateCategory(CreateCategoryDto categoryDto);
         void DeleteCategory(int id);
         void UpdateCategory(UpdateCategoryDTO categoryDto);
+        Task<GetByIDCategoryDto> GetCategory(int id);
     }
 }

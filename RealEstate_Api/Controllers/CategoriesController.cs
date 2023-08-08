@@ -44,5 +44,13 @@ namespace RealEstate_Api.Controllers
             _categoyRepository.UpdateCategory(updateCategoryDto);
             return Ok("Kategori başarılı bir şekilde düzenlendi");
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCategory(int id)
+        {
+            var value = await _categoyRepository.GetCategory(id);
+            return Ok(value);
+        }
+
     }
 }

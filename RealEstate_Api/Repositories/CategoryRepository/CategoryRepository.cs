@@ -48,6 +48,19 @@ namespace RealEstate_Api.Repositories.CategoryRepository
             }
         }
 
+        public async Task<GetByIDCategoryDto> GetCategory(int id)
+        {
+            string query = "Select * From Category Where CategoryID=@categoryID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@categoryID", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var value = await connection.QueryFirstOrDefaultAsync<GetByIDCategoryDto>(query, parameters);
+                return value;
+            }
+        }
+
         public async void UpdateCategory(UpdateCategoryDTO categoryDto)
         {
             string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus where CategoryID=@categoryID";
