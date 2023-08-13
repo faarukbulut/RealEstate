@@ -11730,11 +11730,12 @@ button.owl-next {
     bottom: 38%; } }
 
 .breadcrumb-bg-about {
-  background-size: cover;
-  background-image: linear-gradient(to right, rgba(25, 25, 25, 0.7), rgba(0, 0, 0, 0.7)), url(../images/banner.jpg);
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-position: center;
-  background-attachment: fixed; }
+    background-size: cover;
+    background-color: #293a4e;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
 
 h2.title {
   color: #fff;
