@@ -2,7 +2,7 @@
 using RealEstate_Api.Models.DapperContext;
 using Dapper;
 
-namespace RealEstate_Api.Repositories.CategoryRepository
+namespace RealEstate_Api.Repositories.CategoryRepositories
 {
     public class CategoryRepository : ICategoryRepository
     {

@@ -2,7 +2,7 @@
 using RealEstate_Api.Dtos.WhoWeAreDetailDtos;
 using RealEstate_Api.Models.DapperContext;
 
-namespace RealEstate_Api.Repositories.WhoWeAreDetailRepository
+namespace RealEstate_Api.Repositories.WhoWeAreDetailRepositories
 {
     public class WhoWeAreDetailRepository : IWhoWeAreDetailRepository
     {

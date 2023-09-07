@@ -1,6 +1,6 @@
 ﻿using RealEstate_Api.Dtos.ServiceDtos;
 
-namespace RealEstate_Api.Repositories.ServiceRepository
+namespace RealEstate_Api.Repositories.ServiceRepositories
 {
     public interface IServiceRepository
     {

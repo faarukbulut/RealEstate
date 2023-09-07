@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RealEstate_Api.Repositories.ProductRepository;
+﻿using Microsoft.AspNetCore.Mvc;
+using RealEstate_Api.Repositories.ProductRepositories;
 
 namespace RealEstate_Api.Controllers
 {

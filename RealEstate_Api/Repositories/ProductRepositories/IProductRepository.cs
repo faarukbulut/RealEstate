@@ -1,6 +1,6 @@
 ﻿using RealEstate_Api.Dtos.ProductDtos;
 
-namespace RealEstate_Api.Repositories.ProductRepository
+namespace RealEstate_Api.Repositories.ProductRepositories
 {
     public interface IProductRepository
     {

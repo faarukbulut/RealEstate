@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RealEstate_Api.Dtos.Category;
 using RealEstate_Api.Dtos.WhoWeAreDetailDtos;
-using RealEstate_Api.Repositories.CategoryRepository;
-using RealEstate_Api.Repositories.WhoWeAreDetailRepository;
+using RealEstate_Api.Repositories.WhoWeAreDetailRepositories;
 
 namespace RealEstate_Api.Controllers
 {
