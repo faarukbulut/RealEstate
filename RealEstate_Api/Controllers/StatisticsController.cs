@@ -27,5 +27,40 @@ namespace RealEstate_Api.Controllers
             return Ok(_statisticRepository.ActiveEmployeeCount());
         }
 
+        [HttpGet("ApartmentCount")]
+        public IActionResult ApartmentCount()
+        {
+            return Ok(_statisticRepository.ApartmentCount());
+        }
+
+        [HttpGet("AverageProductPriceByRent")]
+        public IActionResult AverageProductPriceByRent()
+        {
+            return Ok(_statisticRepository.AverageProductPriceByRent());
+        }
+
+        [HttpGet("AverageProductPriceBySale")]
+        public IActionResult AverageProductPriceBySale()
+        {
+            return Ok(_statisticRepository.AverageProductPriceBySale());
+        }
+
+        [HttpGet("AverageRoomCount")]
+        public IActionResult AverageRoomCount()
+        {
+            return Ok(_statisticRepository.AverageRoomCount());
+        }
+
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+            return Ok(_statisticRepository.CategoryCount());
+        }
+
+        [HttpGet("CategoryNameByMaxProductCount")]
+        public IActionResult CategoryNameByMaxProductCount()
+        {
+            return Ok(_statisticRepository.CategoryNameByMaxProductCount());
+        }
     }
 }
