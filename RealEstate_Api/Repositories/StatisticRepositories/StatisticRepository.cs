@@ -13,6 +13,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             _context = context;
         }
 
+        // Durumu aktif olan kategori sayısı
         public int ActiveCategoryCount()
         {
             string query = "Select Count(*) From Category Where CategoryStatus=@status";
@@ -24,6 +25,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
+        // Durumu aktif olan Employee sayısı
         public int ActiveEmployeeCount()
         {
             string query = "Select Count(*) From Employee Where Status=@status";
@@ -35,6 +37,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
+        // Product tablosundaki daire'lerin toplam sayısı
         public int ApartmentCount()
         {
             string query = "Select Count(*) From Product Where Title like @parameter";
@@ -46,6 +49,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
+        // Kiralık ilanların ortalama fiyatı
         public decimal AverageProductPriceByRent()
         {
             string query = "Select Avg(Price) From Product Where Type=@type";
@@ -57,6 +61,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
+        // Satılık ilanların ortalama fiyatı
         public decimal AverageProductPriceBySale()
         {
             string query = "Select Avg(Price) From Product Where Type=@type";
@@ -68,6 +73,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
+        // İlanların ortalama oda sayısı
         public int AverageRoomCount()
         {
             string query = "Select Avg(RoomCount) From ProductDetails";
@@ -79,6 +85,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
+        // Toplam kategori sayısı
         public int CategoryCount()
         {
             string query = "Select Count(*) From Category";
@@ -90,6 +97,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
+        // En çok ilan olan kategori adı
         public string CategoryNameByMaxProductCount()
         {
             string query = "Select top(1) CategoryName,Count(*) From Product INNER JOIN Category On Product.ProductCategory=Category.CategoryID Group By CategoryName ORDER BY Count(*) DESC";
@@ -101,44 +109,103 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
+        // En çok ilan olan şehir adı
         public string CityNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT Top(1) City, Count(*) as 'product_count' FROM Product GROUP BY City ORDER BY product_count DESC";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
+        // Toplam kaç farklı şehir sayısı
         public int DifferentCityCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT Count(DISTINCT(City)) FROM Product";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
+        // En çok ilan olan employee
         public string EmployeeNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT Name,Count(*) as 'product_count' FROM Product INNER JOIN Employee ON Product.EmployeeID = Employee.EmployeeID GROUP BY Name ORDER BY 'product_count' DESC";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
+        // Eklenen son ürünün fiyatı
         public decimal LastProductPrice()
         {
-            throw new NotImplementedException();
+            string query = "SELECT Top(1) Price FROM Product ORDER BY ProductID DESC";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<decimal>(query);
+                return values;
+            }
         }
 
+
+        // İlanlardaki en yeni bina yılı
         public string NewestBuildingYear()
         {
-            throw new NotImplementedException();
+            string query = "SELECT Top(1) BuildYear FROM ProductDetails ORDER BY BuildYear DESC";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
+
+        // İlanlardaki en eski bina yılı
         public string OldestBuildingYear()
         {
-            throw new NotImplementedException();
+            string query = "SELECT Top(1) BuildYear FROM ProductDetails ORDER BY BuildYear ASC";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
+        // Durumu pasif olan kategori sayısı
         public int PassiveCategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "Select Count(*) From Category Where CategoryStatus=@status";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query, new { status = 0 });
+                return values;
+            }
         }
 
+
+        // Toplam ilan sayısı
         public int ProductCount()
         {
-            throw new NotImplementedException();
+            string query = "SELECT Count(*) From Product";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
     }
 }
