@@ -28,5 +28,18 @@ namespace RealEstate_Api.Controllers
             return Ok(values);
         }
 
-    }
+        [HttpGet("ProductDealOfTheDayStatusChangeOfToTrue/{id}")]
+        public async Task<IActionResult> ProductDealOfTheDayStatusChangeOfToTrue(int id)
+        {
+            _productRepository.ProductDealOfTheDayStatusChangeOfToTrue(id);
+            return Ok("İlan durumu aktif olarak güncellendi");
+        }
+
+		[HttpGet("ProductDealOfTheDayStatusChangeOfToFalse/{id}")]
+		public async Task<IActionResult> ProductDealOfTheDayStatusChangeOfToFalse(int id)
+		{
+			_productRepository.ProductDealOfTheDayStatusChangeOfToFalse(id);
+			return Ok("İlan durumu pasif olarak güncellendi");
+		}
+	}
 }
