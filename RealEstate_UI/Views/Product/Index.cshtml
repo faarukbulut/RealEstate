@@ -43,11 +43,11 @@
                                     <td>
                                         @if (item.dealOfTheDay == true)
                                         {
-                                            <a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-secondary">Pasif Yap</a>
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeOfToFalse/@item.productID" class="btn btn-outline-secondary">Pasif Yap</a>
                                         }
                                         else
                                         {
-                                            <a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-warning">Aktif Yap</a>
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeOfToTrue/@item.productID" class="btn btn-outline-warning">Aktif Yap</a>
                                         }
                                     </td>
                                 </tr>
