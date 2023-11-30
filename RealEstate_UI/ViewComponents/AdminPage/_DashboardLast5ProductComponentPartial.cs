@@ -2,13 +2,13 @@
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.ProductDtos;
 
-namespace RealEstate_UI.ViewComponents.HomePage
+namespace RealEstate_UI.ViewComponents.AdminPage
 {
-    public class _DefaultHomePageProductList : ViewComponent
+    public class _DashboardLast5ProductComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _DefaultHomePageProductList(IHttpClientFactory httpClientFactory)
+        public _DashboardLast5ProductComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -16,12 +16,13 @@ namespace RealEstate_UI.ViewComponents.HomePage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/ProductListWithCategory");
-            
-            if(responseMessage.IsSuccessStatusCode)
+            var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/Last5ProductList");
+
+            if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
+
                 return View(values);
             }
 

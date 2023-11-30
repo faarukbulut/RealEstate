@@ -23,7 +23,7 @@ namespace RealEstate_UI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDtos>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
 
                 return View(values);
             }

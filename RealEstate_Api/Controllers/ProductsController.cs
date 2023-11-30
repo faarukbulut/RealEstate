@@ -41,5 +41,12 @@ namespace RealEstate_Api.Controllers
 			_productRepository.ProductDealOfTheDayStatusChangeOfToFalse(id);
 			return Ok("İlan durumu pasif olarak güncellendi");
 		}
-	}
+
+        [HttpGet("Last5ProductList")]
+        public async Task<IActionResult> Last5ProductList()
+        {
+            var values = await _productRepository.GetLast5ProductAsync();
+            return Ok(values);
+        }
+    }
 }
