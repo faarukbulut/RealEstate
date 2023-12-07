@@ -62,13 +62,13 @@ namespace RealEstate_Api.Repositories.ProductRepositories
 			}
 		}
 
-        public async Task<List<ResultProductDto>> GetLast5ProductAsync()
+        public async Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync()
         {
-            string query = "Select Top(5) * From Product Where Type='Kiralık' Order By ProductID Desc";
+            string query = "Select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory = Category.CategoryID Where Type='Kiralık' Order By ProductID Desc";
 
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultProductDto>(query);
+                var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDto>(query);
                 return values.ToList();
             }
         }
