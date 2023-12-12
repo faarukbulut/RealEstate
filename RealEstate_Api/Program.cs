@@ -8,6 +8,7 @@ using RealEstate_Api.Repositories.ProductRepositories;
 using RealEstate_Api.Repositories.ServiceRepositories;
 using RealEstate_Api.Repositories.StatisticRepositories;
 using RealEstate_Api.Repositories.TestimonialRepositories;
+using RealEstate_Api.Repositories.ToDoListRepositories;
 using RealEstate_Api.Repositories.WhoWeAreDetailRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,7 @@ builder.Services.AddTransient<ITestimonialRepository, TestimonialRepository>();
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddTransient<IStatisticRepository, StatisticRepository>();
 builder.Services.AddTransient<IContactRepository, ContactRepository>();
+builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 
 
 builder.Services.AddControllers();
