@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using RealEstate_Api.Dtos.Category;
 using RealEstate_Api.Dtos.ProductDtos;
 using RealEstate_Api.Models.DapperContext;
 
@@ -69,6 +68,19 @@ namespace RealEstate_Api.Repositories.ProductRepositories
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDto>(query);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployee(int id)
+        {
+            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay From Product INNER JOIN Category ON Product.ProductCategory=Category.CategoryID Where EmployeeID=@employeeId";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeId", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductAdvertListWithCategoryByEmployeeDto>(query, parameters);
                 return values.ToList();
             }
         }
