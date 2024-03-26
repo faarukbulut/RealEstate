@@ -1,0 +1,42 @@
+﻿@model UpdateEmployeeDto
+@{
+    ViewData["Title"] = "UpdateEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Personel Güncelle</h6>
+                <form method="post">
+
+                    @Html.HiddenFor(x => x.EmployeeID)
+
+                    <label>Personel Adı</label>
+                    <input type="text" asp-for="Name" class="form-control" />
+                    <br />
+
+                    <label>Ünvan</label>
+                    <input type="text" asp-for="Title" class="form-control" />
+                    <br />
+
+                    <label>E-Posta</label>
+                    <input type="text" asp-for="Mail" class="form-control" />
+                    <br />
+
+                    <label>Telefon Numarası</label>
+                    <input type="text" asp-for="PhoneNumber" class="form-control" />
+                    <br />
+
+                    <label>Fotoğraf</label>
+                    <input type="text" asp-for="ImageURL" class="form-control" />
+                    <br />
+
+                    <button class="btn btn-primary">Düzenle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
