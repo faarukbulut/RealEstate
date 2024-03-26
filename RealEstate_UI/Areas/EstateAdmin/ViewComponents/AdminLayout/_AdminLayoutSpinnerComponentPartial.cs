@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RealEstate_UI.ViewComponents.AdminLayout
+namespace RealEstate_UI.Areas.EstateAdmin.ViewComponents.AdminLayout
 {
-    public class _AdminLayoutHeadComponentPartial : ViewComponent
+    public class _AdminLayoutSpinnerComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

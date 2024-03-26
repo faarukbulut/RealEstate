@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RealEstate_UI.ViewComponents.EstateAgentLayout
+namespace RealEstate_UI.Areas.EstateAgent.ViewComponents.EstateAgentLayout
 {
     public class _EstateAgentLayoutSidebarComponentPartial : ViewComponent
     {

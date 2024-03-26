@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_UI.Dtos.ProductDtos;
+using RealEstate_UI.Dtos.ToDoListDtos;
 
-namespace RealEstate_UI.ViewComponents.AdminPage
+namespace RealEstate_UI.Areas.EstateAdmin.ViewComponents.AdminPage
 {
-    public class _DashboardLast5ProductComponentPartial : ViewComponent
+    public class _DashboardToDoListComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _DashboardLast5ProductComponentPartial(IHttpClientFactory httpClientFactory)
+        public _DashboardToDoListComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -16,13 +16,12 @@ namespace RealEstate_UI.ViewComponents.AdminPage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/Last5ProductList");
+            var responseMessage = await client.GetAsync("https://localhost:44367/api/ToDoLists");
 
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultLast5ProductWithCategoryDto>>(jsonData);
-
+                var values = JsonConvert.DeserializeObject<List<ResultToDoListDto>>(jsonData);
                 return View(values);
             }
 

@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.ContactDtos;
 
-namespace RealEstate_UI.ViewComponents.AdminPage
+namespace RealEstate_UI.Areas.EstateAdmin.ViewComponents.AdminPage
 {
-	public class _DashboardLast4ContactComponentPartial : ViewComponent
-	{
+    public class _DashboardLast4ContactComponentPartial : ViewComponent
+    {
         private readonly IHttpClientFactory _httpClientFactory;
 
         public _DashboardLast4ContactComponentPartial(IHttpClientFactory httpClientFactory)
