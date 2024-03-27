@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RealEstate_UI.Dtos.LoginDtos;
 using RealEstate_UI.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Text.Json;
 
 namespace RealEstate_UI.Controllers
 {
@@ -29,17 +29,14 @@ namespace RealEstate_UI.Controllers
         public async Task<IActionResult> Index(ResultLoginDto resultLoginDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonSerializer.Serialize(resultLoginDto);
+            var jsonData = JsonConvert.SerializeObject(resultLoginDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:44367/api/Login", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
                 var responseData = await responseMessage.Content.ReadAsStringAsync();
-                var tokenModel = JsonSerializer.Deserialize<JwtResponseModel>(responseData, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                });
+                var tokenModel = JsonConvert.DeserializeObject<JwtResponseModel>(responseData);
 
                 if(tokenModel != null)
                 {
@@ -49,7 +46,7 @@ namespace RealEstate_UI.Controllers
 
                     if(tokenModel.Token != null)
                     {
-                        claims.Add(new Claim("realestatetoken", tokenModel.Token));
+                        claims.Add(new Claim("estateagenttoken", tokenModel.Token));
                         var claimsidentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
                         var authProps = new AuthenticationProperties
                         {
@@ -65,8 +62,7 @@ namespace RealEstate_UI.Controllers
                 return RedirectToAction("Index");
             }
 
-
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

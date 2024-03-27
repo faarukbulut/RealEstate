@@ -40,7 +40,7 @@ namespace RealEstate_Api.Controllers
                 }
                 else
                 {
-                    return Ok("Başarısız");
+                    return BadRequest("Başarısız");
                 }
             }
         }

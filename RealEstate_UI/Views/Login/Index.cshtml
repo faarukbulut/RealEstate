@@ -1,4 +1,4 @@
-﻿
+﻿@model ResultLoginDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
@@ -15,13 +15,10 @@
                             <p class="mb-4">Bu alandan kullanıcı girişi yapabilirsiniz.</p>
                             <form method="post" asp-controller="Login" asp-action="Index">
                                 <div class="input-field">
-                                    <input type="text" placeholder="Kullanıcı Adı" required>
+                                    <input type="text" asp-for="Username" placeholder="Kullanıcı Adı" required>
                                 </div>
                                 <div class="input-field mt-4">
-                                    <input type="password" placeholder="Şifre" required>
-                                </div>
-                                <div class="mt-4">
-                                    <input type="checkbox"> <label>Beni Hatırla</label>
+                                    <input type="password" asp-for="Password" placeholder="Şifre" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-style mt-3">Giriş Yap</button>
                             </form>
