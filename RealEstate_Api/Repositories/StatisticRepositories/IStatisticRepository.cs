@@ -18,5 +18,10 @@
         string OldestBuildingYear();
         int AverageRoomCount();
         int ActiveEmployeeCount();
+
+        // estate agent
+        int ProductCountByEmployeeId(int id);
+        int ProductCountByStatusTrue(int id);
+        int ProductCountByStatusFalse(int id);
     }
 }

@@ -3,11 +3,11 @@ using System.Net.Http;
 
 namespace RealEstate_UI.Areas.EstateAdmin.ViewComponents.AdminPage
 {
-    public class _DashboardStatisticsComponentPartial : ViewComponent
+    public class _AdminDashboardStatisticsComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _DashboardStatisticsComponentPartial(IHttpClientFactory httpClientFactory)
+        public _AdminDashboardStatisticsComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

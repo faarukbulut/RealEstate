@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using RealEstate_Api.Models.DapperContext;
-using System.Reflection.Metadata;
 
 namespace RealEstate_Api.Repositories.StatisticRepositories
 {
@@ -204,6 +203,47 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
+        }
+
+        public int ProductCountByEmployeeId(int id)
+        {
+            string query = "SELECT Count(*) From Product Where EmployeeID=@employeeId";
+            var parameters = new DynamicParameters();
+            parameters.Add("employeeId", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query, parameters);
+                return values;
+            }
+        }
+
+        public int ProductCountByStatusFalse(int id)
+        {
+            string query = "SELECT Count(*) From Product Where EmployeeID=@employeeId And ProductStatus=@productStatus";
+            var parameters = new DynamicParameters();
+            parameters.Add("employeeId", id);
+            parameters.Add("productStatus", false);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query, parameters);
+                return values;
+            }
+        }
+
+        public int ProductCountByStatusTrue(int id)
+        {
+            string query = "SELECT Count(*) From Product Where EmployeeID=@employeeId And ProductStatus=@productStatus";
+            var parameters = new DynamicParameters();
+            parameters.Add("employeeId", id);
+            parameters.Add("productStatus", true);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query, parameters);
                 return values;
             }
         }

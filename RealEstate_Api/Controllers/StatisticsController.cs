@@ -111,5 +111,24 @@ namespace RealEstate_Api.Controllers
             return Ok(_statisticRepository.ProductCount());
         }
 
+        [HttpGet("ProductCountByEmployeeId/{id}")]
+        public IActionResult ProductCountByEmployeeId(int id)
+        {
+            return Ok(_statisticRepository.ProductCountByEmployeeId(id));
+        }
+
+        [HttpGet("ProductCountByStatusFalse/{id}")]
+        public IActionResult ProductCountByStatusFalse(int id)
+        {
+            return Ok(_statisticRepository.ProductCountByStatusFalse(id));
+        }
+
+        [HttpGet("ProductCountByStatusTrue/{id}")]
+        public IActionResult ProductCountByStatusTrue(int id)
+        {
+            return Ok(_statisticRepository.ProductCountByStatusTrue(id));
+        }
+
+
     }
 }
