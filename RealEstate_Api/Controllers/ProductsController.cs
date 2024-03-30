@@ -56,6 +56,12 @@ namespace RealEstate_Api.Controllers
             return Ok(values);
         }
 
+        [HttpGet("Last5ProductByEmployeeList/{id}")]
+        public async Task<IActionResult> Last5ProductByEmployeeList(int id)
+        {
+            var values = await _productRepository.GetLast5ProductByEmployeeAsync(id);
+            return Ok(values);
+        }
 
     }
 }

@@ -84,5 +84,18 @@ namespace RealEstate_Api.Repositories.ProductRepositories
                 return values.ToList();
             }
         }
+
+        public async Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductByEmployeeAsync(int id)
+        {
+            string query = "Select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate From Product Inner Join Category On Product.ProductCategory = Category.CategoryID Where EmployeeID=@employeeId Order By ProductID Desc";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeId", id);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDto>(query, parameters);
+                return values.ToList();
+            }
+        }
     }
 }
