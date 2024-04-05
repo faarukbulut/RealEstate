@@ -7,16 +7,9 @@
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-12">
-
             @await Component.InvokeAsync("_EstateAgentDashboardStatisticsComponentPartial")
             @await Component.InvokeAsync("_EstateAgentDashboardChartComponentPartial")
             @await Component.InvokeAsync("_EstateAgentDashboardLast5ProductComponentPartial")
-            <div class="container-fluid">
-                <div class="row g-4">
-                    @await Component.InvokeAsync("_EstateAgentDashboardLast4ContactComponentPartial")
-                    @await Component.InvokeAsync("_EstateAgentDashboardToDoListComponentPartial")
-                </div>
-            </div>
         </div>
     </div>
 </div>
