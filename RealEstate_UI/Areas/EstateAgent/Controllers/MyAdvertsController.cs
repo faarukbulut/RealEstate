@@ -19,7 +19,7 @@ namespace RealEstate_UI.Areas.EstateAgent.Controllers
             _loginService = loginService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ActiveAdverts()
         {
             var token = User.Claims.FirstOrDefault(x => x.Type == "estateagenttoken")?.Value;
             
@@ -27,7 +27,7 @@ namespace RealEstate_UI.Areas.EstateAgent.Controllers
             {
                 var userId = _loginService.GetUserId;
                 var client = _httpClientFactory.CreateClient();
-                var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/ProductAdvertsListByEmployee?id=" + userId);
+                var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/ProductAdvertsListByEmployeeAndTrue?id=" + userId);
 
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -39,5 +39,27 @@ namespace RealEstate_UI.Areas.EstateAgent.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> PassiveAdverts()
+        {
+            var token = User.Claims.FirstOrDefault(x => x.Type == "estateagenttoken")?.Value;
+
+            if (token != null)
+            {
+                var userId = _loginService.GetUserId;
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/ProductAdvertsListByEmployeeAndFalse?id=" + userId);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<ResultProductAdvertListWithCategoryByEmployeeDto>>(jsonData);
+                    return View(values);
+                }
+            }
+
+            return View();
+        }
+
     }
 }
