@@ -78,6 +78,12 @@ namespace RealEstate_Api.Controllers
             return Ok("Ekleme başarılı");
         }
 
+        [HttpGet("GetProductByProductIdDto/{id}")]
+        public async Task<IActionResult> GetProductByProductIdDto(int id)
+        {
+            var values = await _productRepository.GetProductByProductIdDto(id);
+            return Ok(values);
+        }
 
     }
 }

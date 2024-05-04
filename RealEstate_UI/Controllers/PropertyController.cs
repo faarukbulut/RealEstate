@@ -31,6 +31,10 @@ namespace RealEstate_UI.Controllers
         [HttpGet]
         public async Task<IActionResult> PropertySingle(int id)
         {
+
+
+
+
             return View();
         }
 
