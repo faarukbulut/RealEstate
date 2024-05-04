@@ -12,5 +12,6 @@ namespace RealEstate_Api.Repositories.ProductRepositories
         Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndTrue(int id);
         Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndFalse(int id);
         Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductByEmployeeAsync(int id);
+        Task CreateProductAsync(CreateProductDto createProductDto);
     }
 }
