@@ -4,6 +4,6 @@ namespace RealEstate_Api.Repositories.ProductImageRepositories
 {
     public interface IProductImageRepository
     {
-        Task<GetProductImageByProductIdDto> GetProductImageByProductId(int id);
+        Task<List<GetProductImageByProductIdDto>> GetProductImageListByProductId(int id);
     }
 }

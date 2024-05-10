@@ -33,6 +33,7 @@ namespace RealEstate_UI.Controllers
         public async Task<IActionResult> PropertySingle(int id)
         {
             id = 1;
+            ViewBag.ProductID = id;
 
             var client = _httpClientFactory.CreateClient();
 
