@@ -51,17 +51,20 @@ namespace RealEstate_UI.Controllers
             ViewBag.District = values.district;
             ViewBag.Address = values.address;
             ViewBag.Type = values.type;
+            ViewBag.Description = values.description;
+            ViewBag.Date = values.advertisementDate;
 
             DateTime date1 = DateTime.Now;
             DateTime date2 = values.advertisementDate;
             TimeSpan timeSpan = date1 - date2;
             ViewBag.DateDiff = timeSpan.Days;
 
+            ViewBag.RoomCount = values2.roomCount;
             ViewBag.BathCount = values2.bathCount;
             ViewBag.BedCount = values2.bedRoomCount;
             ViewBag.ProductSize = values2.productSize;
-
-
+            ViewBag.GarageSize = values2.garageSize;
+            ViewBag.BuildYear = values2.buildYear;
 
             return View();
 
