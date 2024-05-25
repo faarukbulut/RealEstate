@@ -65,6 +65,8 @@ namespace RealEstate_UI.Controllers
             ViewBag.ProductSize = values2.productSize;
             ViewBag.GarageSize = values2.garageSize;
             ViewBag.BuildYear = values2.buildYear;
+            ViewBag.Location = values2.location;
+            ViewBag.VideoUrl = values2.videoUrl;
 
             return View();
 
