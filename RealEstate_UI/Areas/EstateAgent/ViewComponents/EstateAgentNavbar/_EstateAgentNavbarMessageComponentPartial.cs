@@ -20,7 +20,7 @@ namespace RealEstate_UI.Areas.EstateAgent.ViewComponents.EstateAgentNavbar
         {
             var userId = _loginService.GetUserId;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/Messages?id=" + userId);
+            var responseMessage = await client.GetAsync("https://localhost:7287/api/Messages?id=" + userId);
 
             if (responseMessage.IsSuccessStatusCode)
             {

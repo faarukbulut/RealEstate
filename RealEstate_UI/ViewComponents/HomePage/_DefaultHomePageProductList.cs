@@ -16,7 +16,7 @@ namespace RealEstate_UI.ViewComponents.HomePage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/ProductListWithCategory");
+            var responseMessage = await client.GetAsync("https://localhost:7287/api/Products/ProductListWithCategory");
             
             if(responseMessage.IsSuccessStatusCode)
             {

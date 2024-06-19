@@ -17,7 +17,7 @@ namespace RealEstate_UI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/ProductListWithCategory");
+            var responseMessage = await client.GetAsync("https://localhost:7287/api/Products/ProductListWithCategory");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -37,11 +37,11 @@ namespace RealEstate_UI.Controllers
 
             var client = _httpClientFactory.CreateClient();
 
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/GetProductByProductId/" + id);
+            var responseMessage = await client.GetAsync("https://localhost:7287/api/Products/GetProductByProductId/" + id);
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<ResultProductDto>(jsonData);
 
-            var responseMessage2 = await client.GetAsync("https://localhost:44367/api/ProductDetails/GetProductDetailByProductId/" + id);
+            var responseMessage2 = await client.GetAsync("https://localhost:7287/api/ProductDetails/GetProductDetailByProductId/" + id);
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
             var values2 = JsonConvert.DeserializeObject<GetProductDetailByIdDto>(jsonData2);
 

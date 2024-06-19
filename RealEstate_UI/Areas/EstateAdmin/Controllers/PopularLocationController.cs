@@ -18,7 +18,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/PopularLocations");
+            var responseMessage = await client.GetAsync("https://localhost:7287/api/PopularLocations");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -43,7 +43,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createPopularLocationDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44367/api/PopularLocations", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7287/api/PopularLocations", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -56,7 +56,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> DeletePopularLocation(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:44367/api/PopularLocations/{id}");
+            var responseMessage = await client.DeleteAsync($"https://localhost:7287/api/PopularLocations/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -70,7 +70,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> UpdatePopularLocation(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:44367/api/PopularLocations/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:7287/api/PopularLocations/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -88,7 +88,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updatePopularLocationDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44367/api/PopularLocations/", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:7287/api/PopularLocations/", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {

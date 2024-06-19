@@ -16,7 +16,7 @@ namespace RealEstate_UI.ViewComponents.HomePage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/Testimonials");
+            var responseMessage = await client.GetAsync("https://localhost:7287/api/Testimonials");
 
             if (responseMessage.IsSuccessStatusCode)
             {

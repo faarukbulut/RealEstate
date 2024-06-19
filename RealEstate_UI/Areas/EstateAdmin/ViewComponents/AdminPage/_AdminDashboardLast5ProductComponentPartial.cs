@@ -16,7 +16,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.ViewComponents.AdminPage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44367/api/Products/Last5ProductList");
+            var responseMessage = await client.GetAsync("https://localhost:7287/api/Products/Last5ProductList");
 
             if (responseMessage.IsSuccessStatusCode)
             {

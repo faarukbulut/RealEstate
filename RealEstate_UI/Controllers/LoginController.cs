@@ -31,7 +31,7 @@ namespace RealEstate_UI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(resultLoginDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44367/api/Login", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7287/api/Login", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
