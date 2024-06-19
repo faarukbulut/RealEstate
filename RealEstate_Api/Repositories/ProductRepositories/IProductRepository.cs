@@ -7,13 +7,14 @@ namespace RealEstate_Api.Repositories.ProductRepositories
     {
         Task<List<ResultProductDto>> GetAllProductAsync();
         Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync();
-        void ProductDealOfTheDayStatusChangeOfToTrue(int id);
-        void ProductDealOfTheDayStatusChangeOfToFalse(int id);
+        Task ProductDealOfTheDayStatusChangeOfToTrueAsync(int id);
+        Task ProductDealOfTheDayStatusChangeOfToFalseAsync(int id);
         Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync();
-        Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndTrue(int id);
-        Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndFalse(int id);
+        Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndTrueAsync(int id);
+        Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndFalseAsync(int id);
         Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductByEmployeeAsync(int id);
         Task CreateProductAsync(CreateProductDto createProductDto);
-        Task<GetProductByProductIdDto> GetProductByProductIdDto(int id);
+        Task<GetProductByProductIdDto> GetProductByProductIdAsync(int id);
+        Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchListAsync(string searchKey, int propertyCategoryId, int city);
     }
 }

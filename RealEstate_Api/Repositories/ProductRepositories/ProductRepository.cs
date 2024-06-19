@@ -1,8 +1,6 @@
 ﻿using Dapper;
-using RealEstate_Api.Dtos.ProductDetailDtos;
 using RealEstate_Api.Dtos.ProductDtos;
 using RealEstate_Api.Models.DapperContext;
-using System.Net;
 
 namespace RealEstate_Api.Repositories.ProductRepositories
 {
@@ -37,7 +35,7 @@ namespace RealEstate_Api.Repositories.ProductRepositories
             }
         }
 
-		public async void ProductDealOfTheDayStatusChangeOfToTrue(int id)
+		public async Task ProductDealOfTheDayStatusChangeOfToTrueAsync(int id)
 		{
 			string query = "Update Product Set DealOfTheDay=@dealOfTheDay where ProductID=@productID";
 			var parameters = new DynamicParameters();
@@ -50,7 +48,7 @@ namespace RealEstate_Api.Repositories.ProductRepositories
 			}
 		}
 
-		public async void ProductDealOfTheDayStatusChangeOfToFalse(int id)
+		public async Task ProductDealOfTheDayStatusChangeOfToFalseAsync(int id)
 		{
 			string query = "Update Product Set DealOfTheDay=@dealOfTheDay where ProductID=@productID";
 			var parameters = new DynamicParameters();
@@ -74,7 +72,7 @@ namespace RealEstate_Api.Repositories.ProductRepositories
             }
         }
 
-        public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndTrue(int id)
+        public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndTrueAsync(int id)
         {
             string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay From Product INNER JOIN Category ON Product.ProductCategory=Category.CategoryID Where EmployeeID=@employeeId And ProductStatus=@status";
             var parameters = new DynamicParameters();
@@ -88,7 +86,7 @@ namespace RealEstate_Api.Repositories.ProductRepositories
             }
         }
 
-        public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndFalse(int id)
+        public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndFalseAsync(int id)
         {
             string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay From Product INNER JOIN Category ON Product.ProductCategory=Category.CategoryID Where EmployeeID=@employeeId And ProductStatus=@status";
             var parameters = new DynamicParameters();
@@ -140,7 +138,7 @@ namespace RealEstate_Api.Repositories.ProductRepositories
             }
         }
 
-        public async Task<GetProductByProductIdDto> GetProductByProductIdDto(int id)
+        public async Task<GetProductByProductIdDto> GetProductByProductIdAsync(int id)
         {
             string query = "Select ProductID,Title,Price,City,District,Description,CategoryName,CoverImage,Type,Address,DealOfTheDay,AdvertisementDate From Product INNER JOIN Category ON Product.ProductCategory=Category.CategoryID Where ProductID=@productId";
 
@@ -151,6 +149,22 @@ namespace RealEstate_Api.Repositories.ProductRepositories
             {
                 var values = await connection.QueryAsync<GetProductByProductIdDto>(query, parameters);
                 return values.FirstOrDefault();
+            }
+        }
+
+        public async Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchListAsync(string searchKey, int propertyCategoryId, int city)
+        {
+            string query = "Select * From Product Where Title like '%" + @searchKey + "%' And ProductCategory=@propertyCategoryId And City=@city";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@searchKey", searchKey);
+            parameters.Add("@propertyCategoryId", propertyCategoryId);
+            parameters.Add("@city", city);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithSearchListDto>(query, parameters);
+                return values.ToList();
             }
         }
     }

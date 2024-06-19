@@ -32,14 +32,14 @@ namespace RealEstate_Api.Controllers
         [HttpGet("ProductDealOfTheDayStatusChangeOfToTrue/{id}")]
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeOfToTrue(int id)
         {
-            _productRepository.ProductDealOfTheDayStatusChangeOfToTrue(id);
+            await _productRepository.ProductDealOfTheDayStatusChangeOfToTrueAsync(id);
             return Ok("İlan durumu aktif olarak güncellendi");
         }
 
 		[HttpGet("ProductDealOfTheDayStatusChangeOfToFalse/{id}")]
 		public async Task<IActionResult> ProductDealOfTheDayStatusChangeOfToFalse(int id)
 		{
-			_productRepository.ProductDealOfTheDayStatusChangeOfToFalse(id);
+			await _productRepository.ProductDealOfTheDayStatusChangeOfToFalseAsync(id);
 			return Ok("İlan durumu pasif olarak güncellendi");
 		}
 
@@ -53,14 +53,14 @@ namespace RealEstate_Api.Controllers
         [HttpGet("ProductAdvertsListByEmployeeAndTrue")]
         public async Task<IActionResult> ProductAdvertsListByEmployeeAndTrue(int id)
         {
-            var values = await _productRepository.GetProductAdvertListByEmployeeAndTrue(id);
+            var values = await _productRepository.GetProductAdvertListByEmployeeAndTrueAsync(id);
             return Ok(values);
         }
 
         [HttpGet("ProductAdvertsListByEmployeeAndFalse")]
         public async Task<IActionResult> ProductAdvertsListByEmployeeAndFalse(int id)
         {
-            var values = await _productRepository.GetProductAdvertListByEmployeeAndFalse(id);
+            var values = await _productRepository.GetProductAdvertListByEmployeeAndFalseAsync(id);
             return Ok(values);
         }
 
@@ -81,9 +81,15 @@ namespace RealEstate_Api.Controllers
         [HttpGet("GetProductByProductIdDto/{id}")]
         public async Task<IActionResult> GetProductByProductIdDto(int id)
         {
-            var values = await _productRepository.GetProductByProductIdDto(id);
+            var values = await _productRepository.GetProductByProductIdAsync(id);
             return Ok(values);
         }
 
+        [HttpGet("ResultProductWithSearchListAsync")]
+        public async Task<IActionResult> ResultProductWithSearchListAsync(string searchKey, int propertyCategoryId, int city)
+        {
+            var values = await _productRepository.ResultProductWithSearchListAsync(searchKey, propertyCategoryId, city);
+            return Ok(values);
+        }
     }
 }
