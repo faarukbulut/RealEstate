@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.MessageDtos;
+using RealEstate_UI.Models;
 using RealEstate_UI.Services;
 
 namespace RealEstate_UI.Areas.EstateAgent.ViewComponents.EstateAgentNavbar
@@ -20,7 +21,7 @@ namespace RealEstate_UI.Areas.EstateAgent.ViewComponents.EstateAgentNavbar
         {
             var userId = _loginService.GetUserId;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/Messages?id=" + userId);
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "Messages?id=" + userId);
 
             if (responseMessage.IsSuccessStatusCode)
             {

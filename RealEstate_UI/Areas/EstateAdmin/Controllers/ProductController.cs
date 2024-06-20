@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.CategoryDtos;
 using RealEstate_UI.Dtos.ProductDtos;
+using RealEstate_UI.Models;
 
 namespace RealEstate_UI.Areas.EstateAdmin.Controllers
 {
@@ -19,7 +20,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/Products/ProductListWithCategory");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "Products/ProductListWithCategory");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -36,7 +37,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> CreateProduct()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/Categories/");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "Categories/");
 
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
@@ -56,7 +57,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeOfToTrue(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/Products/ProductDealOfTheDayStatusChangeOfToTrue/" + id);
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "Products/ProductDealOfTheDayStatusChangeOfToTrue/" + id);
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -69,7 +70,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> ProductDealOfTheDayStatusChangeOfToFalse(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/Products/ProductDealOfTheDayStatusChangeOfToFalse/" + id);
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "Products/ProductDealOfTheDayStatusChangeOfToFalse/" + id);
 
             if (responseMessage.IsSuccessStatusCode)
             {

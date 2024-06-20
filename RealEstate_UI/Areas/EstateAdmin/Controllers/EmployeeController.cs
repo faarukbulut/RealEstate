@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.EmployeeDtos;
+using RealEstate_UI.Models;
 using System.Text;
 
 namespace RealEstate_UI.Areas.EstateAdmin.Controllers
@@ -18,7 +19,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/Employees");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "Employees");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -43,7 +44,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createEmployeeDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7287/api/Employees", stringContent);
+            var responseMessage = await client.PostAsync(ApiSettings.BaseUrl + "Employees", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -56,7 +57,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> DeleteEmployee(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7287/api/Employees/{id}");
+            var responseMessage = await client.DeleteAsync(ApiSettings.BaseUrl + $"Employees/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -71,7 +72,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> UpdateEmployee(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7287/api/Employees/{id}");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + $"Employees/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -89,7 +90,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateEmployeeDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7287/api/Employees/", stringContent);
+            var responseMessage = await client.PutAsync(ApiSettings.BaseUrl + "Employees/", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {

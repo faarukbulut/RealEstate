@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.ServiceDtos;
 using RealEstate_UI.Dtos.WhoWeAreDtos;
+using RealEstate_UI.Models;
 
 namespace RealEstate_UI.ViewComponents.HomePage
 {
@@ -19,8 +20,8 @@ namespace RealEstate_UI.ViewComponents.HomePage
             var client = _httpClientFactory.CreateClient();
             var client2 = _httpClientFactory.CreateClient();
 
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/WhoWeAreDetail");
-            var responseMessage2 = await client2.GetAsync("https://localhost:7287/api/Services");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "WhoWeAreDetail");
+            var responseMessage2 = await client2.GetAsync(ApiSettings.BaseUrl + "Services");
 
             if (responseMessage.IsSuccessStatusCode && responseMessage2.IsSuccessStatusCode)
             {

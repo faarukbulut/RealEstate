@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.WhoWeAreDtos;
+using RealEstate_UI.Models;
 using System.Text;
 
 namespace RealEstate_UI.Areas.EstateAdmin.Controllers
@@ -18,7 +19,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/WhoWeAreDetail");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "WhoWeAreDetail");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -43,7 +44,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createWhoWeAreDetailDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7287/api/WhoWeAreDetail", stringContent);
+            var responseMessage = await client.PostAsync(ApiSettings.BaseUrl + "WhoWeAreDetail", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -56,7 +57,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7287/api/WhoWeAreDetail/{id}");
+            var responseMessage = await client.DeleteAsync(ApiSettings.BaseUrl + $"WhoWeAreDetail/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -71,7 +72,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> UpdateWhoWeAreDetail(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7287/api/WhoWeAreDetail/{id}");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + $"WhoWeAreDetail/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -89,7 +90,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateWhoWeAreDetailDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7287/api/WhoWeAreDetail/", stringContent);
+            var responseMessage = await client.PutAsync(ApiSettings.BaseUrl + "WhoWeAreDetail/", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.ProductDtos;
+using RealEstate_UI.Models;
 using RealEstate_UI.Services;
 
 namespace RealEstate_UI.Areas.EstateAgent.ViewComponents.EstateAgentPage
@@ -20,7 +21,7 @@ namespace RealEstate_UI.Areas.EstateAgent.ViewComponents.EstateAgentPage
         {
             var id = _loginService.GetUserId;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/Products/Last5ProductByEmployeeList/" + id);
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "Products/Last5ProductByEmployeeList/" + id);
 
             if (responseMessage.IsSuccessStatusCode)
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.BottomGridDtos;
+using RealEstate_UI.Models;
 using System.Text;
 
 namespace RealEstate_UI.Areas.EstateAdmin.Controllers
@@ -18,7 +19,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/BottomGrids");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "BottomGrids");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -43,7 +44,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createBottomGridDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7287/api/BottomGrids", stringContent);
+            var responseMessage = await client.PostAsync(ApiSettings.BaseUrl + "BottomGrids", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -56,7 +57,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> DeleteBottomGrid(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7287/api/BottomGrids/{id}");
+            var responseMessage = await client.DeleteAsync(ApiSettings.BaseUrl + $"BottomGrids/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -70,7 +71,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
         public async Task<IActionResult> UpdateBottomGrid(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7287/api/BottomGrids/{id}");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + $"BottomGrids/{id}");
 
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -88,7 +89,7 @@ namespace RealEstate_UI.Areas.EstateAdmin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateBottomGridDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7287/api/BottomGrids/", stringContent);
+            var responseMessage = await client.PutAsync(ApiSettings.BaseUrl + "BottomGrids/", stringContent);
 
             if (responseMessage.IsSuccessStatusCode)
             {

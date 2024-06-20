@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.ProductImageDtos;
+using RealEstate_UI.Models;
 
 namespace RealEstate_UI.ViewComponents.PropertyPage
 {
@@ -16,7 +17,7 @@ namespace RealEstate_UI.ViewComponents.PropertyPage
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/ProductImges/GetProductImageListByProductId/" + id);
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "ProductImages/GetProductImageListByProductId/" + id);
 
             if (responseMessage.IsSuccessStatusCode)
             {

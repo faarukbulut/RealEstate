@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.AppUserDtos;
+using RealEstate_UI.Models;
 
 namespace RealEstate_UI.ViewComponents.PropertyPage
 {
@@ -17,7 +18,7 @@ namespace RealEstate_UI.ViewComponents.PropertyPage
         {
             int id = 1;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/AppUsers/GetAppUserByProductId/" + id);
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "AppUsers/GetAppUserByProductId/" + id);
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<GetAppUserByProductIdDto>(jsonData);
 

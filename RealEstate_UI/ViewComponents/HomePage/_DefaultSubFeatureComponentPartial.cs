@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_UI.Dtos.SubFeatureDtos;
+using RealEstate_UI.Models;
 
 namespace RealEstate_UI.ViewComponents.HomePage
 {
@@ -16,7 +17,7 @@ namespace RealEstate_UI.ViewComponents.HomePage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7287/api/SubFeatures");
+            var responseMessage = await client.GetAsync(ApiSettings.BaseUrl + "SubFeatures");
 
             if (responseMessage.IsSuccessStatusCode)
             {
