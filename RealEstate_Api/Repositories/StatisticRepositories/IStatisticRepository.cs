@@ -2,26 +2,26 @@
 {
     public interface IStatisticRepository
     {
-        int CategoryCount();
-        int ActiveCategoryCount();
-        int PassiveCategoryCount();
-        int ProductCount();
-        int ApartmentCount();
-        string EmployeeNameByMaxProductCount();
-        string CategoryNameByMaxProductCount();
-        decimal AverageProductPriceByRent();
-        decimal AverageProductPriceBySale();
-        string CityNameByMaxProductCount();
-        int DifferentCityCount();
-        decimal LastProductPrice();
-        string NewestBuildingYear();
-        string OldestBuildingYear();
-        int AverageRoomCount();
-        int ActiveEmployeeCount();
+        Task<int> CategoryCountAsync();
+        Task<int> ActiveCategoryCountAsync();
+        Task<int> PassiveCategoryCountAsync();
+        Task<int> ProductCountAsync();
+        Task<int> ApartmentCountAsync();
+        Task<string> EmployeeNameByMaxProductCountAsync();
+        Task<string> CategoryNameByMaxProductCountAsync();
+        Task<decimal> AverageProductPriceByRentAsync();
+        Task<decimal> AverageProductPriceBySaleAsync();
+        Task<string> CityNameByMaxProductCountAsync();
+        Task<int> DifferentCityCountAsync();
+        Task<decimal> LastProductPriceAsync();
+        Task<string> NewestBuildingYearAsync();
+        Task<string> OldestBuildingYearAsync();
+        Task<int> AverageRoomCountAsync();
+        Task<int> ActiveEmployeeCountAsync();
 
         // estate agent
-        int ProductCountByEmployeeId(int id);
-        int ProductCountByStatusTrue(int id);
-        int ProductCountByStatusFalse(int id);
+        Task<int> ProductCountByEmployeeIdAsync(int id);
+        Task<int> ProductCountByStatusTrueAsync(int id);
+        Task<int> ProductCountByStatusFalseAsync(int id);
     }
 }

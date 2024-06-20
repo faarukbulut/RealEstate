@@ -17,7 +17,7 @@ namespace RealEstate_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get5CityForChart()
         {
-            var values = await _chartRepository.Get5CityForChart();
+            var values = await _chartRepository.Get5CityForChartAsync();
             return Ok(values);
         }
     }

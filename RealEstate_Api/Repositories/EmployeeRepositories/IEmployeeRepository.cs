@@ -5,9 +5,9 @@ namespace RealEstate_Api.Repositories.EmployeeRepositories
     public interface IEmployeeRepository
     {
         Task<List<ResultEmployeeDto>> GetAllEmployeeAsync();
-        void CreateEmployee(CreateEmployeeDto createEmployeeDto);
-        void DeleteEmployee(int id);
-        void UpdateEmployee(UpdateEmployeeDto updateEmployeeDto);
-        Task<GetByIDEmployeeDto> GetEmployee(int id);
+        Task CreateEmployeeAsync(CreateEmployeeDto createEmployeeDto);
+        Task DeleteEmployeeAsync(int id);
+        Task UpdateEmployeeAsync(UpdateEmployeeDto updateEmployeeDto);
+        Task<GetByIDEmployeeDto> GetEmployeeAsync(int id);
     }
 }

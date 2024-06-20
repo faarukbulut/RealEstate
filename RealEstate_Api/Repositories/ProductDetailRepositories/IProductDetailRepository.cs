@@ -4,6 +4,6 @@ namespace RealEstate_Api.Repositories.ProductDetailRepositories
 {
     public interface IProductDetailRepository
     {
-        Task<GetProductDetailByIdDto> GetProductDetailByProductId(int id);
+        Task<GetProductDetailByIdDto> GetProductDetailByProductIdAsync(int id);
     }
 }

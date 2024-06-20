@@ -17,7 +17,7 @@ namespace RealEstate_Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductImageListByProductId(int id)
         {
-            var value = await _productImageRepository.GetProductImageListByProductId(id);
+            var value = await _productImageRepository.GetProductImageListByProductIdAsync(id);
             return Ok(value);
         }
 

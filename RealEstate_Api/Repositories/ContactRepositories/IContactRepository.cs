@@ -6,8 +6,8 @@ namespace RealEstate_Api.Repositories.ContactRepositories
 	{
 		Task<List<ResultContactDto>> GetAllContactAsync();
 		Task<List<Last4ContactResultDto>> GetLast4ContactAsync();
-		void CreateContact(CreateContactDto createContactDto);
-		void DeleteContact(int id);
-		Task<GetByIDContactDto> GetContact(int id);
+        Task CreateContactAsync(CreateContactDto createContactDto);
+        Task DeleteContactAsync(int id);
+		Task<GetByIDContactDto> GetContactAsync(int id);
 	}
 }

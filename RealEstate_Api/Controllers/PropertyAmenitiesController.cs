@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RealEstate_Api.Repositories.PropertyAmenityRepositories;
 
 namespace RealEstate_Api.Controllers
@@ -18,7 +17,7 @@ namespace RealEstate_Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> ResultPropertyAmenityByStatusTrue(int id)
         {
-            var values = await _propertyAmenityRepository.ResultPropertyAmenityByStatusTrue(id);
+            var values = await _propertyAmenityRepository.ResultPropertyAmenityByStatusTrueAsync(id);
             return Ok(values);
         }
     }

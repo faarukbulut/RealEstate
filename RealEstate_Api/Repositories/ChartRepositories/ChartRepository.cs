@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.ChartRepositories
             _context = context;
         }
 
-        public async Task<List<ResultChartDto>> Get5CityForChart()
+        public async Task<List<ResultChartDto>> Get5CityForChartAsync()
         {
             string query = "Select top(5) City,Count(*) as 'CityCount' From Product Group By City Order By CityCount Desc";
 

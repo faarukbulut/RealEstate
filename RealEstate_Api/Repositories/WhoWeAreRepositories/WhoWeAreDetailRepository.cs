@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.WhoWeAreDetailRepositories
             _context = context;
         }
 
-        public async void CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
+        public async Task CreateWhoWeAreDetailAsync(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
         {
             string query = "Insert into WhoWeAreDetail (Title,Subtitle,Description1,Description2) values (@title,@subtitle,@description1,@description2)";
             var parameters = new DynamicParameters();
@@ -28,7 +28,7 @@ namespace RealEstate_Api.Repositories.WhoWeAreDetailRepositories
             }
         }
 
-        public async void DeleteWhoWeAreDetail(int id)
+        public async Task DeleteWhoWeAreDetailAsync(int id)
         {
             string query = "Delete From WhoWeAreDetail Where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
@@ -50,7 +50,7 @@ namespace RealEstate_Api.Repositories.WhoWeAreDetailRepositories
             }
         }
 
-        public async Task<GetByIDWhoWeAreDetailDto> GetWhoWeAreDetail(int id)
+        public async Task<GetByIDWhoWeAreDetailDto> GetWhoWeAreDetailAsync(int id)
         {
             string query = "Select * From WhoWeAreDetail Where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();
@@ -63,7 +63,7 @@ namespace RealEstate_Api.Repositories.WhoWeAreDetailRepositories
             }
         }
 
-        public async void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
+        public async Task UpdateWhoWeAreDetailAsync(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
         {
             string query = "Update WhoWeAreDetail Set Title=@title,Subtitle=@subTitle,Description1=@description1,Description2=@description2 where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();

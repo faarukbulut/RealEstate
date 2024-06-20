@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.ProductImageRepositories
             _context = context;
         }
 
-        public async Task<List<GetProductImageByProductIdDto>> GetProductImageListByProductId(int id)
+        public async Task<List<GetProductImageByProductIdDto>> GetProductImageListByProductIdAsync(int id)
         {
             string query = "Select * From ProductImage Where ProductID=@productId";
             var parameters = new DynamicParameters();

@@ -5,9 +5,9 @@ namespace RealEstate_Api.Repositories.WhoWeAreDetailRepositories
     public interface IWhoWeAreDetailRepository
     {
         Task<List<ResultWhoWeAreDetailDto>> GetAllWhoWeAreDetailAsync();
-        void CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto);
-        void DeleteWhoWeAreDetail(int id);
-        void UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto);
-        Task<GetByIDWhoWeAreDetailDto> GetWhoWeAreDetail(int id);
+        Task CreateWhoWeAreDetailAsync(CreateWhoWeAreDetailDto createWhoWeAreDetailDto);
+        Task DeleteWhoWeAreDetailAsync(int id);
+        Task UpdateWhoWeAreDetailAsync(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto);
+        Task<GetByIDWhoWeAreDetailDto> GetWhoWeAreDetailAsync(int id);
     }
 }

@@ -25,29 +25,28 @@ namespace RealEstate_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
         {
-            _whoWeAreDetailRepository.CreateWhoWeAreDetail(createWhoWeAreDetailDto);
-
+            await _whoWeAreDetailRepository.CreateWhoWeAreDetailAsync(createWhoWeAreDetailDto);
             return Ok("Hakkımızda kısmı başarılı bir şekilde eklendi");
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {
-            _whoWeAreDetailRepository.DeleteWhoWeAreDetail(id);
+            await _whoWeAreDetailRepository.DeleteWhoWeAreDetailAsync(id);
             return Ok("Hakkımızda kısmı başarılı bir şekilde silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
         {
-            _whoWeAreDetailRepository.UpdateWhoWeAreDetail(updateWhoWeAreDetailDto);
+            await _whoWeAreDetailRepository.UpdateWhoWeAreDetailAsync(updateWhoWeAreDetailDto);
             return Ok("Hakkımızda kısmı başarılı bir şekilde düzenlendi");
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetWhoWeAreDetail(int id)
         {
-            var value = await _whoWeAreDetailRepository.GetWhoWeAreDetail(id);
+            var value = await _whoWeAreDetailRepository.GetWhoWeAreDetailAsync(id);
             return Ok(value);
         }
     }

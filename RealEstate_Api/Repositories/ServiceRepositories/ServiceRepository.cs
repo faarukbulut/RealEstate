@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.ServiceRepositories
             _context = context;
         }
 
-        public async void CreateService(CreateServiceDto serviceDto)
+        public async Task CreateServiceAsync(CreateServiceDto serviceDto)
         {
             string query = "Insert into Service (ServiceName,Status) values (@serviceName,@status)";
             var parameters = new DynamicParameters();
@@ -26,7 +26,7 @@ namespace RealEstate_Api.Repositories.ServiceRepositories
             }
         }
 
-        public async void DeleteService(int id)
+        public async Task DeleteServiceAsync(int id)
         {
             string query = "Delete From Service Where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
@@ -48,7 +48,7 @@ namespace RealEstate_Api.Repositories.ServiceRepositories
             }
         }
 
-        public async Task<GetByIDServiceDto> GetService(int id)
+        public async Task<GetByIDServiceDto> GetServiceAsync(int id)
         {
             string query = "Select * From Service Where ServiceID=@serviceID";
             var parameters = new DynamicParameters();
@@ -61,7 +61,7 @@ namespace RealEstate_Api.Repositories.ServiceRepositories
             }
         }
 
-        public async void UpdateService(UpdateServiceDto serviceDto)
+        public async Task UpdateServiceAsync(UpdateServiceDto serviceDto)
         {
             string query = "Update Service Set ServiceName=@servisName,Status=@status where ServiceID=@serviceID";
             var parameters = new DynamicParameters();

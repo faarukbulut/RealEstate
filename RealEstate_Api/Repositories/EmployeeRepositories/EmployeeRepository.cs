@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.EmployeeRepositories
             _context = context;
         }
 
-        public async void CreateEmployee(CreateEmployeeDto createEmployeeDto)
+        public async Task CreateEmployeeAsync(CreateEmployeeDto createEmployeeDto)
         {
             string query = "Insert into Employee (Name,Title,Mail,PhoneNumber,ImageURL,Status) values (@name,@title,@mail,@phoneNumber,@imageUrl,@status)";
             var parameters = new DynamicParameters();
@@ -30,7 +30,7 @@ namespace RealEstate_Api.Repositories.EmployeeRepositories
             }
         }
 
-        public async void DeleteEmployee(int id)
+        public async Task DeleteEmployeeAsync(int id)
         {
             string query = "Delete From Employee Where EmployeeID=@employeeId";
             var parameters = new DynamicParameters();
@@ -52,7 +52,7 @@ namespace RealEstate_Api.Repositories.EmployeeRepositories
             }
         }
 
-        public async Task<GetByIDEmployeeDto> GetEmployee(int id)
+        public async Task<GetByIDEmployeeDto> GetEmployeeAsync(int id)
         {
             string query = "Select * From Employee Where EmployeeID=@employeeId";
             var parameters = new DynamicParameters();
@@ -65,7 +65,7 @@ namespace RealEstate_Api.Repositories.EmployeeRepositories
             }
         }
 
-        public async void UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
+        public async Task UpdateEmployeeAsync(UpdateEmployeeDto updateEmployeeDto)
         {
             string query = "Update Employee Set Name=@name,Title=@title,Mail=@mail,PhoneNumber=@phoneNumber,ImageURL=@imageURL,Status=@status where EmployeeID=@employeeId";
             var parameters = new DynamicParameters();

@@ -17,7 +17,7 @@ namespace RealEstate_Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAppUserByProductId(int id)
         {
-            var value = await _appUserRepository.GetAppUserByProductId(id);
+            var value = await _appUserRepository.GetAppUserByProductIdAsync(id);
             return Ok(value);
         }
     }

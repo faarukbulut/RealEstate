@@ -17,7 +17,7 @@ namespace RealEstate_Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetInboxLast3MessageListByReceiver(int id)
         {
-            var values = await _messageRepository.GetInboxLast3MessageListByReceiver(id);
+            var values = await _messageRepository.GetInboxLast3MessageListByReceiverAsync(id);
             return Ok(values);
         }
 

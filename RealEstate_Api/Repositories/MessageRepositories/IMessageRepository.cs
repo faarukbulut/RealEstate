@@ -4,6 +4,6 @@ namespace RealEstate_Api.Repositories.MessageRepositories
 {
     public interface IMessageRepository
     {
-        Task<List<ResultInboxMessageDto>> GetInboxLast3MessageListByReceiver(int id);
+        Task<List<ResultInboxMessageDto>> GetInboxLast3MessageListByReceiverAsync(int id);
     }
 }

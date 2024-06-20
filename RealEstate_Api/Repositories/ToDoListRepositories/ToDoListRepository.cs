@@ -13,12 +13,12 @@ namespace RealEstate_Api.Repositories.ToDoListRepositories
 			_context = context;
 		}
 
-		public void CreateToDoList(CreateToDoListDto ToDoListDto)
+		public Task CreateToDoListAsync(CreateToDoListDto ToDoListDto)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void DeleteToDoList(int id)
+		public Task DeleteToDoListAsync(int id)
 		{
 			throw new NotImplementedException();
 		}
@@ -34,12 +34,12 @@ namespace RealEstate_Api.Repositories.ToDoListRepositories
 			}
 		}
 
-		public Task<GetByIDToDoListDto> GetToDoList(int id)
+		public Task<GetByIDToDoListDto> GetToDoListAsync(int id)
 		{
 			throw new NotImplementedException();
 		}
 
-		public void UpdateToDoList(UpdateToDoListDto ToDoListDto)
+		public Task UpdateToDoListAsync(UpdateToDoListDto ToDoListDto)
 		{
 			throw new NotImplementedException();
 		}

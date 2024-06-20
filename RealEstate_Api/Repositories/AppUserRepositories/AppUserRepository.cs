@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.AppUserRepositories
             _context = context;
         }
 
-        public async Task<GetAppUserByProductIdDto> GetAppUserByProductId(int id)
+        public async Task<GetAppUserByProductIdDto> GetAppUserByProductIdAsync(int id)
         {
             string query = "Select * From AppUser Where UserID=@appUserId";
             var parameters = new DynamicParameters();

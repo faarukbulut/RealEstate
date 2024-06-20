@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Durumu aktif olan kategori sayısı
-        public int ActiveCategoryCount()
+        public async Task<int> ActiveCategoryCountAsync()
         {
             string query = "Select Count(*) From Category Where CategoryStatus=@status";
 
@@ -25,7 +25,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Durumu aktif olan Employee sayısı
-        public int ActiveEmployeeCount()
+        public async Task<int> ActiveEmployeeCountAsync()
         {
             string query = "Select Count(*) From Employee Where Status=@status";
 
@@ -37,7 +37,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Product tablosundaki daire'lerin toplam sayısı
-        public int ApartmentCount()
+        public async Task<int> ApartmentCountAsync()
         {
             string query = "Select Count(*) From Product Where Title like @parameter";
 
@@ -49,7 +49,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Kiralık ilanların ortalama fiyatı
-        public decimal AverageProductPriceByRent()
+        public async Task<decimal> AverageProductPriceByRentAsync()
         {
             string query = "Select Avg(Price) From Product Where Type=@type";
 
@@ -61,7 +61,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Satılık ilanların ortalama fiyatı
-        public decimal AverageProductPriceBySale()
+        public async Task<decimal> AverageProductPriceBySaleAsync()
         {
             string query = "Select Avg(Price) From Product Where Type=@type";
 
@@ -73,7 +73,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // İlanların ortalama oda sayısı
-        public int AverageRoomCount()
+        public async Task<int> AverageRoomCountAsync()
         {
             string query = "Select Avg(RoomCount) From ProductDetails";
 
@@ -85,7 +85,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Toplam kategori sayısı
-        public int CategoryCount()
+        public async Task<int> CategoryCountAsync()
         {
             string query = "Select Count(*) From Category";
 
@@ -97,7 +97,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // En çok ilan olan kategori adı
-        public string CategoryNameByMaxProductCount()
+        public async Task<string> CategoryNameByMaxProductCountAsync()
         {
             string query = "Select top(1) CategoryName,Count(*) From Product INNER JOIN Category On Product.ProductCategory=Category.CategoryID Group By CategoryName ORDER BY Count(*) DESC";
 
@@ -109,7 +109,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // En çok ilan olan şehir adı
-        public string CityNameByMaxProductCount()
+        public async Task<string> CityNameByMaxProductCountAsync()
         {
             string query = "SELECT Top(1) City, Count(*) as 'product_count' FROM Product GROUP BY City ORDER BY product_count DESC";
 
@@ -121,7 +121,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Toplam kaç farklı şehir sayısı
-        public int DifferentCityCount()
+        public async Task<int> DifferentCityCountAsync()
         {
             string query = "SELECT Count(DISTINCT(City)) FROM Product";
 
@@ -133,7 +133,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // En çok ilan olan employee
-        public string EmployeeNameByMaxProductCount()
+        public async Task<string> EmployeeNameByMaxProductCountAsync()
         {
             string query = "SELECT Name,Count(*) as 'product_count' FROM Product INNER JOIN Employee ON Product.EmployeeID = Employee.EmployeeID GROUP BY Name ORDER BY 'product_count' DESC";
 
@@ -145,7 +145,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Eklenen son ürünün fiyatı
-        public decimal LastProductPrice()
+        public async Task<decimal> LastProductPriceAsync()
         {
             string query = "SELECT Top(1) Price FROM Product ORDER BY ProductID DESC";
 
@@ -158,7 +158,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
 
 
         // İlanlardaki en yeni bina yılı
-        public string NewestBuildingYear()
+        public async Task<string> NewestBuildingYearAsync()
         {
             string query = "SELECT Top(1) BuildYear FROM ProductDetails ORDER BY BuildYear DESC";
 
@@ -171,7 +171,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
 
 
         // İlanlardaki en eski bina yılı
-        public string OldestBuildingYear()
+        public async Task<string> OldestBuildingYearAsync()
         {
             string query = "SELECT Top(1) BuildYear FROM ProductDetails ORDER BY BuildYear ASC";
 
@@ -183,7 +183,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
         }
 
         // Durumu pasif olan kategori sayısı
-        public int PassiveCategoryCount()
+        public async Task<int> PassiveCategoryCountAsync()
         {
             string query = "Select Count(*) From Category Where CategoryStatus=@status";
 
@@ -196,7 +196,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
 
 
         // Toplam ilan sayısı
-        public int ProductCount()
+        public async Task<int> ProductCountAsync()
         {
             string query = "SELECT Count(*) From Product";
 
@@ -207,7 +207,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
-        public int ProductCountByEmployeeId(int id)
+        public async Task<int> ProductCountByEmployeeIdAsync(int id)
         {
             string query = "SELECT Count(*) From Product Where EmployeeID=@employeeId";
             var parameters = new DynamicParameters();
@@ -220,7 +220,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
-        public int ProductCountByStatusFalse(int id)
+        public async Task<int> ProductCountByStatusFalseAsync(int id)
         {
             string query = "SELECT Count(*) From Product Where EmployeeID=@employeeId And ProductStatus=@productStatus";
             var parameters = new DynamicParameters();
@@ -234,7 +234,7 @@ namespace RealEstate_Api.Repositories.StatisticRepositories
             }
         }
 
-        public int ProductCountByStatusTrue(int id)
+        public async Task<int> ProductCountByStatusTrueAsync(int id)
         {
             string query = "SELECT Count(*) From Product Where EmployeeID=@employeeId And ProductStatus=@productStatus";
             var parameters = new DynamicParameters();

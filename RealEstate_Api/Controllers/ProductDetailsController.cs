@@ -17,7 +17,7 @@ namespace RealEstate_Api.Controllers
         [HttpGet("GetProductDetailByProductId/{id}")]
         public async Task<IActionResult> GetProductDetailByProductId(int id)
         {
-            var values = await _productDetailRepository.GetProductDetailByProductId(id);
+            var values = await _productDetailRepository.GetProductDetailByProductIdAsync(id);
             return Ok(values);
         }
     }

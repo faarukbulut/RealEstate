@@ -4,6 +4,6 @@ namespace RealEstate_Api.Repositories.PropertyAmenityRepositories
 {
     public interface IPropertyAmenityRepository
     {
-        Task<List<ResultPropertyAmenityByStatusTrueDto>> ResultPropertyAmenityByStatusTrue(int id);
+        Task<List<ResultPropertyAmenityByStatusTrueDto>> ResultPropertyAmenityByStatusTrueAsync(int id);
     }
 }

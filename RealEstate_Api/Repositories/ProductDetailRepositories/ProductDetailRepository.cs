@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.ProductDetailRepositories
             _context = context;
         }
 
-        public async Task<GetProductDetailByIdDto> GetProductDetailByProductId(int id)
+        public async Task<GetProductDetailByIdDto> GetProductDetailByProductIdAsync(int id)
         {
             string query = "Select * From ProductDetails Where ProductID=@productId ";
 

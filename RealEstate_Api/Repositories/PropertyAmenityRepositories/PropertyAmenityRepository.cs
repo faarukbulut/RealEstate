@@ -13,7 +13,7 @@ namespace RealEstate_Api.Repositories.PropertyAmenityRepositories
             _context = context;
         }
 
-        public async Task<List<ResultPropertyAmenityByStatusTrueDto>> ResultPropertyAmenityByStatusTrue(int id)
+        public async Task<List<ResultPropertyAmenityByStatusTrueDto>> ResultPropertyAmenityByStatusTrueAsync(int id)
         {
             string query = "Select PropertyAmenityId,Title From PropertyAmenity Inner Join Amenity On Amenity.AmenityId=PropertyAmenityId Where PropertyId=@propertyId And Status=@status";
             var parameters = new DynamicParameters();

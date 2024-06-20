@@ -4,6 +4,6 @@ namespace RealEstate_Api.Repositories.AppUserRepositories
 {
     public interface IAppUserRepository
     {
-        Task<GetAppUserByProductIdDto> GetAppUserByProductId(int id);
+        Task<GetAppUserByProductIdDto> GetAppUserByProductIdAsync(int id);
     }
 }

@@ -16,119 +16,137 @@ namespace RealEstate_Api.Controllers
         }
 
         [HttpGet("ActiveCategoryCount")]
-        public IActionResult ActiveCategoryCount()
+        public async Task<IActionResult> ActiveCategoryCount()
         {
-            return Ok(_statisticRepository.ActiveCategoryCount());
+            var value = await _statisticRepository.ActiveCategoryCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("ActiveEmployeeCount")]
-        public IActionResult ActiveEmployeeCount()
+        public async Task<IActionResult> ActiveEmployeeCount()
         {
-            return Ok(_statisticRepository.ActiveEmployeeCount());
+            var value = await _statisticRepository.ActiveEmployeeCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("ApartmentCount")]
-        public IActionResult ApartmentCount()
+        public async Task<IActionResult> ApartmentCount()
         {
-            return Ok(_statisticRepository.ApartmentCount());
+            var value = await _statisticRepository.ApartmentCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("AverageProductPriceByRent")]
-        public IActionResult AverageProductPriceByRent()
+        public async Task<IActionResult> AverageProductPriceByRent()
         {
-            return Ok(_statisticRepository.AverageProductPriceByRent());
+            var value = await _statisticRepository.AverageProductPriceByRentAsync();
+            return Ok(value);
         }
 
         [HttpGet("AverageProductPriceBySale")]
-        public IActionResult AverageProductPriceBySale()
+        public async Task<IActionResult> AverageProductPriceBySale()
         {
-            return Ok(_statisticRepository.AverageProductPriceBySale());
+            var value = await _statisticRepository.AverageProductPriceBySaleAsync();
+            return Ok(value);
         }
 
         [HttpGet("AverageRoomCount")]
-        public IActionResult AverageRoomCount()
+        public async Task<IActionResult> AverageRoomCount()
         {
-            return Ok(_statisticRepository.AverageRoomCount());
+            var value = await _statisticRepository.AverageRoomCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("CategoryCount")]
-        public IActionResult CategoryCount()
+        public async Task<IActionResult> CategoryCount()
         {
-            return Ok(_statisticRepository.CategoryCount());
+            var value = await _statisticRepository.CategoryCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("CategoryNameByMaxProductCount")]
-        public IActionResult CategoryNameByMaxProductCount()
+        public async Task<IActionResult> CategoryNameByMaxProductCount()
         {
-            return Ok(_statisticRepository.CategoryNameByMaxProductCount());
+            var value = await _statisticRepository.CategoryNameByMaxProductCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("CityNameByMaxProductCount")]
-        public IActionResult CityNameByMaxProductCount()
+        public async Task<IActionResult> CityNameByMaxProductCount()
         {
-            return Ok(_statisticRepository.CityNameByMaxProductCount());
+            var value = await _statisticRepository.CityNameByMaxProductCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("DifferentCityCount")]
-        public IActionResult DifferentCityCount()
+        public async Task<IActionResult> DifferentCityCount()
         {
-            return Ok(_statisticRepository.DifferentCityCount());
+            var value = await _statisticRepository.DifferentCityCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("EmployeeNameByMaxProductCount")]
-        public IActionResult EmployeeNameByMaxProductCount()
+        public async Task<IActionResult> EmployeeNameByMaxProductCount()
         {
-            return Ok(_statisticRepository.EmployeeNameByMaxProductCount());
+            var value = await _statisticRepository.EmployeeNameByMaxProductCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("LastProductPrice")]
-        public IActionResult LastProductPrice()
+        public async Task<IActionResult> LastProductPrice()
         {
-            return Ok(_statisticRepository.LastProductPrice());
+            var value = await _statisticRepository.LastProductPriceAsync();
+            return Ok(value);
         }
 
         [HttpGet("NewestBuildingYear")]
-        public IActionResult NewestBuildingYear()
+        public async Task<IActionResult> NewestBuildingYear()
         {
-            return Ok(_statisticRepository.NewestBuildingYear());
+            var value = await _statisticRepository.NewestBuildingYearAsync();
+            return Ok(value);
         }
 
         [HttpGet("OldestBuildingYear")]
-        public IActionResult OldestBuildingYear()
+        public async Task<IActionResult> OldestBuildingYear()
         {
-            return Ok(_statisticRepository.OldestBuildingYear());
+            var value = await _statisticRepository.OldestBuildingYearAsync();
+            return Ok(value);
         }
 
         [HttpGet("PassiveCategoryCount")]
-        public IActionResult PassiveCategoryCount()
+        public async Task<IActionResult> PassiveCategoryCount()
         {
-            return Ok(_statisticRepository.PassiveCategoryCount());
+            var value = await _statisticRepository.PassiveCategoryCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("ProductCount")]
-        public IActionResult ProductCount()
+        public async Task<IActionResult> ProductCount()
         {
-            return Ok(_statisticRepository.ProductCount());
+            var value = await _statisticRepository.ProductCountAsync();
+            return Ok(value);
         }
 
         [HttpGet("ProductCountByEmployeeId/{id}")]
-        public IActionResult ProductCountByEmployeeId(int id)
+        public async Task<IActionResult> ProductCountByEmployeeId(int id)
         {
-            return Ok(_statisticRepository.ProductCountByEmployeeId(id));
+            var value = await _statisticRepository.ProductCountByEmployeeIdAsync(id);
+            return Ok(value);
         }
 
         [HttpGet("ProductCountByStatusFalse/{id}")]
-        public IActionResult ProductCountByStatusFalse(int id)
+        public async Task<IActionResult> ProductCountByStatusFalse(int id)
         {
-            return Ok(_statisticRepository.ProductCountByStatusFalse(id));
+            var value = await _statisticRepository.ProductCountByStatusFalseAsync(id);
+            return Ok(value);
         }
 
         [HttpGet("ProductCountByStatusTrue/{id}")]
-        public IActionResult ProductCountByStatusTrue(int id)
+        public async Task<IActionResult> ProductCountByStatusTrue(int id)
         {
-            return Ok(_statisticRepository.ProductCountByStatusTrue(id));
+            var value = await _statisticRepository.ProductCountByStatusTrueAsync(id);
+            return Ok(value);
         }
-
 
     }
 }
