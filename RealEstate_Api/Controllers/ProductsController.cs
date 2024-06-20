@@ -50,6 +50,13 @@ namespace RealEstate_Api.Controllers
             return Ok(values);
         }
 
+        [HttpGet("Last3ProductList")]
+        public async Task<IActionResult> Last3ProductList()
+        {
+            var values = await _productRepository.GetLast3ProductAsync();
+            return Ok(values);
+        }
+
         [HttpGet("ProductAdvertsListByEmployeeAndTrue")]
         public async Task<IActionResult> ProductAdvertsListByEmployeeAndTrue(int id)
         {
@@ -89,6 +96,13 @@ namespace RealEstate_Api.Controllers
         public async Task<IActionResult> ResultProductWithSearchListAsync(string searchKey, int propertyCategoryId, int city)
         {
             var values = await _productRepository.ResultProductWithSearchListAsync(searchKey, propertyCategoryId, city);
+            return Ok(values);
+        }
+
+        [HttpGet("GetProductByDealOfTheDayTrueWithCategoryAsync")]
+        public async Task<IActionResult> GetProductByDealOfTheDayTrueWithCategoryAsync()
+        {
+            var values = await _productRepository.GetProductByDealOfTheDayTrueWithCategoryAsync();
             return Ok(values);
         }
     }

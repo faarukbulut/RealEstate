@@ -10,11 +10,14 @@ namespace RealEstate_Api.Repositories.ProductRepositories
         Task ProductDealOfTheDayStatusChangeOfToTrueAsync(int id);
         Task ProductDealOfTheDayStatusChangeOfToFalseAsync(int id);
         Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync();
+        Task<List<ResultLast3ProductWithCategoryDto>> GetLast3ProductAsync();
         Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndTrueAsync(int id);
         Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndFalseAsync(int id);
         Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductByEmployeeAsync(int id);
         Task CreateProductAsync(CreateProductDto createProductDto);
         Task<GetProductByProductIdDto> GetProductByProductIdAsync(int id);
         Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchListAsync(string searchKey, int propertyCategoryId, int city);
+        Task<List<ResultProductWithCategoryDto>> GetProductByDealOfTheDayTrueWithCategoryAsync();
+
     }
 }

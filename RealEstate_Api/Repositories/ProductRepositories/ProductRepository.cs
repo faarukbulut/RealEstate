@@ -72,6 +72,17 @@ namespace RealEstate_Api.Repositories.ProductRepositories
             }
         }
 
+        public async Task<List<ResultLast3ProductWithCategoryDto>> GetLast3ProductAsync()
+        {
+            string query = "Select Top(3) ProductID,Title,Price,City,District,ProductCategory,CategoryName,AdvertisementDate,CoverImage,Description From Product Inner Join Category On Product.ProductCategory = Category.CategoryID Order By ProductID Desc";
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultLast3ProductWithCategoryDto>(query);
+                return values.ToList();
+            }
+        }
+
         public async Task<List<ResultProductAdvertListWithCategoryByEmployeeDto>> GetProductAdvertListByEmployeeAndTrueAsync(int id)
         {
             string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay From Product INNER JOIN Category ON Product.ProductCategory=Category.CategoryID Where EmployeeID=@employeeId And ProductStatus=@status";
@@ -164,6 +175,20 @@ namespace RealEstate_Api.Repositories.ProductRepositories
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithSearchListDto>(query, parameters);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultProductWithCategoryDto>> GetProductByDealOfTheDayTrueWithCategoryAsync()
+        {
+            string query = "Select ProductID,Title,Price,City,District,CategoryName,CoverImage,Type,Address,DealOfTheDay From Product INNER JOIN Category ON Product.ProductCategory=Category.CategoryID Where DealOfTheDay=@dealOfTheDay";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@dealOfTheDay", true);
+
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query, parameters);
                 return values.ToList();
             }
         }
