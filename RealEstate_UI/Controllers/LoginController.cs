@@ -19,7 +19,7 @@ namespace RealEstate_UI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        [HttpGet]
+        [HttpGet("giris-yap")]
         public IActionResult Index()
         {
             return View();

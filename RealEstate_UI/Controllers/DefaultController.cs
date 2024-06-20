@@ -4,6 +4,7 @@ namespace RealEstate_UI.Controllers
 {
     public class DefaultController : Controller
     {
+        [HttpGet("anasayfa")]
 		public IActionResult Index()
         {
 			return View();
